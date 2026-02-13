@@ -1,0 +1,25 @@
+# ~/.config/chezmoi/chezmoi.toml.tmpl
+
+[template]
+  version = 2
+  funcs = ["promptBoolOnce","promptStringOnce","promptChoiceOnce"]
+
+# Prompts run only on first apply; answers are stored in the generated config.
+
+#{{- $use_secrets := promptBoolOnce . "use_secrets" "Use secrets from Bitwarden? (true/false)" -}}
+{{- $name := promptStringOnce . "name" "User name:" -}}
+{{- $email := promptStringOnce . "email" "Email address:" -}}
+
+# Machine identity
+{{- $machine_type := promptChoiceOnce "machine_type" "What type of machine is this?" (list "work" "personal") -}}
+
+[data]
+  use_secrets = {{ $use_secrets }}
+  name = {{ $name | quote }}
+  email = {{ $email | quote }}
+  machine_type = {{ $machine_type | quote }}
+
+[git]
+    # autoAdd = true
+    autoCommit = true # add + commit
+    autoPush = true

@@ -1,0 +1,13 @@
+# Global gitignore files
+######################
+.DS_Store
+.DS_Store?
+._.DS_Store
+**/.DS_Storeo
+**/._.DS_Store
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+install.sh
+README.md
